@@ -35,7 +35,8 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		$games = $this->game->getPublic();
+		$games = Game::active()->orderBy('created_at', 'desc')->get();
+		//$games = $this->game->getPublic();
 
 		$categories = Category::all();
 

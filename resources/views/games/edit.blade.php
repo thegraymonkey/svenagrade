@@ -18,8 +18,18 @@
 					<textarea  class="form-control" name="title">{{ $game->title }}</textarea>
 				</div>
 
+				<div class="form-group">
+					<label>Website</label>
+					<textarea  class="form-control" name="website">{{ $game->website}}</textarea>
+				</div>
+
+				<div class="form-group">
+					<label>Website address</label>
+					<textarea  class="form-control" name="website_url">{{ $game->website_url}}</textarea>
+				</div>
+
 				<div class="form-group">	
-					<label for="photo">Game Thumbnail</label>
+					<label for="photo">Game image</label>
 					<input class="form-control" type="file" name="photo" id="photo">
 				</div>
 
@@ -29,18 +39,18 @@
 				</div>
 
 				<div class="form-group">
-					<label>Game Code</label>
-					<textarea  class="form-control" name="code">{{ $game->code }}</textarea>
+					<label>Deadline</label>
+					<textarea  class="form-control" name="deadline">{{ $game->deadline }}</textarea>
 				</div>
 
 				<div class="form-group">
-					<label>Game Thumbnail</label>
-					<textarea  class="form-control" name="thumbnail">{{ $game->thumbnail }}</textarea>
+					<label>Prizes</label>
+					<textarea  class="form-control" name="prizes">{{ $game->prizes }}</textarea>
 				</div>
 
 				<div class="form-group">
-					<label>Game Instructions</label>
-					<textarea  class="form-control" name="instructions">{{ $game->instructions }}</textarea>
+					<label>Winers</label>
+					<textarea  class="form-control" name="winers">{{ $game->winers }}</textarea>
 				</div>
 
 				<div class="form-group">

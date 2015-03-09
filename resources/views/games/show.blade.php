@@ -23,38 +23,34 @@
                     <div class="col-md-8">
 
                         <div class="thumbnail" style="margin: 0 auto;">
-                            <img src="/images/game1.jpg" class="img-responsive">
+                            <img src="{{ $game->getImagePath() }}" class="img-responsive">
                         </div>
 
                         <div class="panel panel-primary text-center">
 						  <div class="panel-body">
-						    <h2>Frikom - Pazljivo lizite!</h2>
-						    <p><a href="www.frikom.rs/">Vebsajt</a></p>
+						    <h2>{{ $game->title }}</h2>
+						    <p><a href="{{ $game->website_url }}">{{ $game->website }}</a></p>
 						  </div>
 						</div>
 
 						<div class="panel panel-danger text-center">
 						  <div class="panel-body">
 						    <h4>Rok Trajanja Nagradne Igre</h4>
-						    <h4>25.03.2015</h4>
+						    <h4>{{ $game->deadline->format('d-m-Y') }}</h4>
 						  </div>
 						</div>
 						
 						<div class="panel panel-warning text-center">
 						  <div class="panel-body" >
 						    <h4>Uslovi Ucesca & Pravila</h4>
-						    <p>Pazljivo lizite i trazite stapic sa dva ista kraja za vredne nagrade.
-						    	Sakupite tri nedobitna stapica i posaljite na nasu adressu tatat rhajdmfdmlds.</p>
+						    <p>{{ $game->description }}</p>
 						  </div>
 						</div>
 
 						<div class="panel panel-info text-center">
 						  <div class="panel-body">
 						    <h4>Nagrade</h4>
-						    <p>1.nagrada - sto miliona iljada necega</p>
-						    <p>2.nagrada - sto miliona iljada necega</p>
-						    <p>3.nagrada - sto miliona iljada necega</p>
-						    <p>I jos monogo mnogo nagrada...</p>
+						    <p>{{ $game->prizes }}</p>
 						  </div>
 						</div>
 
@@ -62,32 +58,46 @@
 						  <div class="panel-body">
 						    <h4>Ocene potrosaca</h4>
 						    <div class="ratings">
-                                <p>{{ $reviewNum }} reviews</p>
+                                <p>{{ $game->review_count }} reviews</p>
                                 <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                </p>
+					                @if($game->rating == 0)
+					                <span>No rating yet...</span>
+					                @elseif($game->rating == 2)
+					                <span class="glyphicon glyphicon-star"></span>
+					                @elseif($game->rating == 2)
+					                <span class="glyphicon glyphicon-star"></span>
+					                <span class="glyphicon glyphicon-star"></span>
+					                @elseif($game->rating == 3)
+					                <span class="glyphicon glyphicon-star"></span>
+					                <span class="glyphicon glyphicon-star"></span> 
+					                <span class="glyphicon glyphicon-star"></span>               
+					                @elseif($game->rating == 4)
+					                <span class="glyphicon glyphicon-star"></span>
+					                <span class="glyphicon glyphicon-star"></span>
+					                <span class="glyphicon glyphicon-star"></span>
+					                <span class="glyphicon glyphicon-star"></span>
+					                @elseif($game->rating == 5)
+					                <span class="glyphicon glyphicon-star"></span>
+					                <span class="glyphicon glyphicon-star"></span>
+					                <span class="glyphicon glyphicon-star"></span>
+					                <span class="glyphicon glyphicon-star"></span>
+					                <span class="glyphicon glyphicon-star"></span>
+					                @endif
+					            </p>
                             </div>
 						  </div>
 						</div>
-
+						@if($game->winers)
 						<div class="panel panel-success text-center">
 						  <div class="panel-body">
 						    <h4>Dobitnici</h4>
-						    <p>1.Nagrada-Milion bureka - Djoka Djokic!</p>
-						    <p>1.Nagrada-Milion bureka - Djoka Djokic!</p>
-						    <p>1.Nagrada-Milion bureka - Djoka Djokic!</p>
-						    <p>1.Nagrada-Milion bureka - Djoka Djokic!</p>
-						    <p>1.Nagrada-Milion bureka - Djoka Djokic!</p>
+						    <p>{{ $game->winers }}</p>
 						  </div>
 						</div>
-
+						@endif
 						<div class="text-center">
 	                    	<img src="/images/share.png">
-	                    	<img src="/images/tweet.gif">
+	                    	<img src="/images/tweet.png">
                     	</div>
 
 		                @include('reviews.create')

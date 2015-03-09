@@ -20,9 +20,10 @@ class ReviewObserver {
 
 		 $game->rating = $avg;
 
-		 $gmae->review_count = $reviewsCount;
+		 $game->review_count = $reviewsCount;
 
 		 $game->save();
+        
     }
 
 }

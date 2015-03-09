@@ -26,8 +26,8 @@ class GameController extends Controller {
 
 	public function index()
 	{
-
-		$games = $this->game->getPublic();
+		$games = Game::active()->orderBy('created_at', 'desc')->get();
+		//$games = $this->game->getPublic();
 
 		$reviews = Review::where('game_id', $game->getKey());
 
@@ -45,6 +45,8 @@ class GameController extends Controller {
 	{
 		$categories = Category::all();
 
+		$games = $this->game->getPublic();
+
 		$game = Game::find($id);
 
 		$reviews = Review::where('game_id', $game->getKey())->simplePaginate(10);
@@ -56,7 +58,8 @@ class GameController extends Controller {
 									'categories' => $categories,
 									'game' => $game, 									
 		 							'reviews' => $reviews,
-		 							'current_page' => '/'	 							
+		 							'current_page' => '/',
+		 							"games" => $games	 							
 									]);
 	}
 

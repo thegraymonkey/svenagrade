@@ -15,6 +15,7 @@ use app\View as ViewModel;
 use app\Category;
 use app\Repositories\GameInterface;
 use Redirect;
+use Input;
 
 class ReviewController extends Controller {
 
@@ -32,7 +33,11 @@ class ReviewController extends Controller {
 
 	public function store()
 	{
+		$ip = Request::getClientIp();
+
 		$input = Request::all();
+
+		$gameId = Input::get('game_id');
 
 		$rules = [
 		'name' => 'required|min:2',
@@ -44,14 +49,22 @@ class ReviewController extends Controller {
 
 		if ($validation->passes())
 		{
-			
-			$review = new Review;
+			$review = Review::where('game_id',  $gameId)->where('user_ip', ip2long(Request::getClientIp()))->first();
 
-			$review->fill($input);
+			if(!$review)
+			{
+				$review = new Review;
 
-			$review->save();
+				$review->fill($input);
 
-			return Redirect::back()->with('message', 'Review Published!');
+				$review->user_ip = ip2long($ip);
+
+				$review->save();
+
+				return Redirect::back()->with('message', 'Review Published!');
+			}
+
+			return Redirect::back()->withErrors('You already reviewed this game!');
 		}	
 
 		return Redirect::back()->withErrors($validation);

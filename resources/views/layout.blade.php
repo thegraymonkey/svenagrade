@@ -17,6 +17,9 @@
     <!-- Custom CSS -->
      <link href="/css/welcome.css" rel="stylesheet">
 
+     
+
+
     @yield('topcss')
 
 </head>
@@ -37,10 +40,18 @@
                 <div>
                      <a href="{{ url('/')}}"><img src="/images/logo.png" class="img-responsive"></a>
                 </div>
+
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">                              
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+
+                                      
                 <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <a href="#" class="btn btn-social-icon btn-twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </li>
                     <li @if($current_page === '/')class="active"@endif>
                         <a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
                     </li>
@@ -48,6 +59,7 @@
                         <a href="{{ url('contacts/show') }}">Kontakt & Marketing</a>
                     </li>                  
                 </ul>
+
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -72,13 +84,13 @@
                     </li>
                     @endforeach
                     <li>
-                        <a href="#">Najpopularnije</a>
+                        <a href="{{ route('pops.index') }}">Najpopularnije</a>
                     </li>            
                 </ul> 
 
-                <form class="nav navbar-form pull-right"  role="search">
+                <form class="nav navbar-form pull-right" method="GET" role="search" action="{{ route('search.index') }}">
                     <div class="input-group add-on">
-                      <input type="text" class="form-control" placeholder="Trazi igre" name="srch-term" id="srch-term">
+                      <input type="text" class="form-control" placeholder="Trazi igre" name="query">
                       <div class="input-group-btn">
                         <button class="btn btn-info" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                       </div>
@@ -106,6 +118,9 @@
 
                 <div class="col-lg-12">
                     <p>Powered by <a href="http://thegraymonkey.com">TheGrayMonkey</a></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>2015</p>
                 </div>
             </div>
         </footer>

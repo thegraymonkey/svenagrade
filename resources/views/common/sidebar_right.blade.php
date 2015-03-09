@@ -1,23 +1,23 @@
 <div class="text-center" style="margin-bottom:20px;">
   <button class="btn btn-primary btn-lg" type="button">
-   Broj aktuelnih igara! <span class="badge">4</span>
+   Broj aktuelnih igara! <span class="badge">{{ count($games) }}</span>
  </button>
 </div>
 
-<hr>
+
 
 <div class="text-center" style="margin-bottom:20px;">
-  <button class="btn btn-success btn-lg" type="button">
+  <a href="{{ route('winers.index') }}"><button class="btn btn-success btn-lg" type="button">
    Srecni Dobitnici! 
- </button>
+ </button></a>
 </div>
 
-<hr>  
+  
 
 <div class="text-center" style="margin-bottom:20px;">
-  <button class="btn btn-danger btn-lg" type="button">
+  <a href="{{ route('archives.index') }}"><button class="btn btn-danger btn-lg" type="button">
    Arhiva! 
- </button>
+ </button></a>
 </div>
 
 <hr>	

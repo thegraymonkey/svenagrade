@@ -24,7 +24,8 @@ class Review extends Model {
 		'rating',
 		'comment',
 		'game_id',
-		'name'
+		'name',
+		'user_ip'
 	];
 
 	

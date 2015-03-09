@@ -21,7 +21,7 @@ class CategoryController extends Controller {
 		$categories = Category::all();
 		$category = Category::find($id);
 
-		$games = Game::where('category_id', $category->id )->paginate(5);
+		$games = Game::active()->where('category_id', $category->id )->paginate(10);
 
 		return view('categories/show', [
 									'categories' => $categories,

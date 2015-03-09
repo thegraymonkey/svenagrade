@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use app\Review;
+use Carbon\Carbon;
 
 class Game extends Model {
 
@@ -57,6 +58,19 @@ class Game extends Model {
 	{
 		return ['created_at', 'updated_at', 'deadline'];
 	}
+
+	public function scopeActive($query)
+	{
+		return $query->where( 'deadline', '>', Carbon::now());
+
+	}
+
+	public function scopePassive($query)
+	{
+		return $query->where( 'deadline', '<', Carbon::now());
+
+	}
+
 
 
 }

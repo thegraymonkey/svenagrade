@@ -28,4 +28,12 @@ $router->resource('categories', 'CategoryController', ['only' => ['index', 'show
 
 $router->resource('reviews', 'ReviewController', ['only' => ['index', 'show', 'edit', 'update', 'destroy', 'store', 'create']]);
 
+$router->resource('search', 'SearchController', ['only' => ['index', 'show', 'edit', 'update', 'destroy', 'store', 'create']]);
+
+$router->resource('winers', 'WinerController', ['only' => ['index', 'show', 'edit', 'update', 'destroy', 'store', 'create']]);
+
+$router->resource('archives', 'ArchiveController', ['only' => ['index']]);
+
+$router->resource('pops', 'PopController', ['only' => ['index']]);
+
 app\Review::observe(new app\ReviewObserver);
